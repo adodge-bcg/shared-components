@@ -1,0 +1,22 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  yarn:
+    name: Deploy Storybook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Run Yarn Install
+      - name: Run Yarn Install
+        run: yarn install
+
+      # Run Npm deploy-storybook
+      - name: Run Npm Deploy-Storybook
+        run: npm run deploy-storybook -- --ci
