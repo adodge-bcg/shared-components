@@ -18,5 +18,7 @@ jobs:
         run: yarn install
 
       # Run Npm deploy-storybook
-      - name: Run Npm Deploy-Storybook
-        run: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
+      - name: Deploy storybook to Github Pages
+        run: npm run deploy-storybook -- --ci
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
